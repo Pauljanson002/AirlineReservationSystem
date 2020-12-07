@@ -1,25 +1,26 @@
 B airways 
 
 General information 
-	Based on - Indonesia 
-	Transits not available
+
+		Based on - Indonesia 
+		Transits not available
 	
 
-Entities	Attributes
-Flight		Airplane, Route[origin,Destination],Seat[multiple], Schedule
-Model 		Name, number , seating capacity
-Airplane	id, model
-Route 		Start, end 
-Airport 	code, location [ ...,city,country]
-Passenger 	Type [ Guest, Registered User]
-Guest 	
-Registered User	Category[Frquent, Gold] (derived by number of times flight booked)
-Ticket 		Price ( Derived from class [ Economy,Business,Platinum] ),Discount (Derived from category of user)
-Seat		ID, Booked[yes/no] , class
-Booking		state(created, completed)
-Payment		Not processed by system
-Report	
-Managment	
+	Entities		Attributes
+	Flight			Airplane, Route[origin,Destination],Seat[multiple], Schedule
+	Model 			Name, number , seating capacity
+	Airplane		id, model
+	Route 			Start, end 
+	Airport 		code, location [ ...,city,country]
+	Passenger 		Type [ Guest, Registered User]
+	Guest 	
+	Registered User		Category[Frquent, Gold] (derived by number of times flight booked)
+	Ticket 			Price ( Derived from class [ Economy,Business,Platinum] ),Discount (Derived from category of user)
+	Seat			ID, Booked[yes/no] , class
+	Booking			state(created, completed)
+	Payment			Not processed by system
+	Report	
+	Managment	
 
 
 

@@ -5,5 +5,6 @@ const router = express.Router()
 
 router.route('/')
     .post(userController.create)
+router.route('/list').get()
 
 export default router

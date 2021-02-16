@@ -6,9 +6,10 @@ import UserFlightSchedule from './user/user.flightschedule'
 const MainRouter = () =>{
     return (<div>
         <Switch>
-            {/*<Route exact path="/" component={Home}/>*/}
-            <Route exact path="/" component={UserFlightSchedule}/>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/flight" component={UserFlightSchedule}/>
             <Route exact path="/auth/login" component={Login}/>
+            <Route />
         </Switch>
     </div>)
 }

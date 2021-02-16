@@ -18,5 +18,11 @@ export default {
            return {}
         }
         return rows[0]
-    }
+    },
+    delete:async (registered_user) =>{
+        const value = await pool.query(
+            "DELETE FROM registered_user where id = $1",[registered_user.id]
+        )
+
+}
 }

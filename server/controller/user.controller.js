@@ -17,5 +17,17 @@ const create = async (req, res, next) => {
 
     }
 }
+const registeredUsernameCheck = async (req,res,next) =>{
+    try{
+        const username = req.params.username
+        const possible = await registered_user_db.RegisteredUsernameCheck(username)
+        return res.status(200).json({
+            'possible':possible
+        })
+    }
+    catch (e) {
+       console.log(e)
+    }
+}
 
-export default {create}
+export default {create,registeredUsernameCheck}

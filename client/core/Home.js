@@ -67,7 +67,7 @@ export default function Home() {
                             Welcome to B Airways
                         </h1>
                         <h2 className="subtitle">
-                            Traveling the world makes dream come true
+                            வானம் என்ன உங்க அப்பன் வீட்டு சொத்தா..
                         </h2>
                         <div className="box">
                             <div className="columns is-mobile">

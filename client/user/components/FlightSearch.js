@@ -13,7 +13,7 @@ const FlightSearch = function () {
     }
     return(
         <div className="container">
-            <div className="box has-background-grey-light">
+            <div className="box  has-background-grey-light mt-0">
                 <form onSubmit={event => event.preventDefault()}>
                     <div className="field">
                         <label className="is-size-5">Date of travel</label>

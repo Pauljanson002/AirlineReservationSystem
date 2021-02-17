@@ -2,8 +2,8 @@ import React from "react";
 import logo from "../assets/logo.png"
 import "./Home.css"
 import {Link} from "react-router-dom";
+import RegisterForm from "../registered_user/components/registerform";
 export default function Home() {
-
     return(
         <section className="hero is-info is-fullheight">
             <div className="hero-head">
@@ -89,7 +89,9 @@ export default function Home() {
                             </div>
                             <div className="columns ">
                                 <div className="column">
-                                    <button className="button is-link">Register as User</button>
+                                    <Link to="/registered_user/register">
+                                        <button className="button is-link">Register as User</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

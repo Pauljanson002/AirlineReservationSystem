@@ -20,7 +20,6 @@ app.use(helmet());
 app.use(cors());
 app.use('/dist',express.static(path.join(CURRENT_WORKING_DIR,'dist')))
 app.use("/api/registered_user/",userRoutes)
-app.use("/api/flight/",)
 app.use("/auth/",authRoutes)
 app.get("/", (req, res) => {
   res.status(200).send(Template());

@@ -16,8 +16,9 @@ export default {
                 [rows[0].user_id,registered_user.user_name,registered_user.hashed_password,0,0])
             await client.query('COMMIT')
         }catch (e) {
-           console.log(e)
+            if(e.code === '23505') console.log("Username already exists")
            await client.query('ROLLBACK')
+            throw e
         }finally {
             client.release()
         }

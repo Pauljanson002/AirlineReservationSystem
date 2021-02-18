@@ -7,7 +7,8 @@ import RegisterUserPage from "./registered_user/registered_user_register";
 const MainRouter = () =>{
     return (<div>
         <Switch>
-            <Route exact path="/" component={Home}/>
+            {/*<Route exact path="/" component={Home}/>*/}
+            <Route exact path="/" component={UserFlightSchedule}/>
             <Route exact path="/registered_user/register" component={RegisterUserPage}/>
             <Route exact path="/flight" component={UserFlightSchedule}/>
             <Route exact path="/auth/login" component={Login}/>

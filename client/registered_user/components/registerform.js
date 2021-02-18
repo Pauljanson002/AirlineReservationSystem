@@ -41,7 +41,7 @@ const RegisterForm = () => {
         console.log("Here")
         setValues({...values,['user_name']:event.target.value,['possible']:true})
       }else{
-        setValues({...values,['possible']:false})
+        setValues({...values,['possible']:false,['user_name']:event.target.value})
       }
     })
   },1000)
@@ -60,6 +60,10 @@ const RegisterForm = () => {
 
   const handleSubmit = (event)=>{
       event.preventDefault()
+      // if(!values.possible){
+      //   setValues({...values,error:"Username is not available"});
+      //   return
+      // }
       const user = {
         first_name:values.first_name,
         last_name:values.last_name,
@@ -122,7 +126,7 @@ const RegisterForm = () => {
               <input
                 className="input"
                 type="text"
-                placeholder="Text input" onChange={handleUsernameAvailability} on
+                placeholder="Text input" onChange={handleUsernameAvailability} required
               />
               <span className="icon is-small is-left">
                 <i className="fa fa-user"></i>
@@ -197,7 +201,7 @@ const RegisterForm = () => {
 
           {values.error && (
           <div className="notification is-danger">
-            There is an error
+            {values.error}
           </div>
           )}
           <div className="field is-grouped">

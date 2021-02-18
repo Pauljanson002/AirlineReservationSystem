@@ -2,8 +2,37 @@ import React from 'react'
 import Seat from "./Seat";
 import "./SeatCanvas.css"
 
-export default function SeatCanvas () {
-
+export default function SeatCanvas ({platinum, business, economy}) {
+    let platinumRows = Array(platinum).map((n,i)=>{
+        return(
+            <tr>
+                <th>{i}</th>
+                <td><Seat type="Platinum" row={i} column="A" /></td>
+                <td><Seat type="Platinum" row={i} column="B" /></td>
+                <td><Seat type="Platinum" row={i} column="C" /></td>
+            </tr>
+        )
+    })
+    let businessRows = Array(business).map((n,i)=>{
+        return(
+            <tr>
+                <th>{platinumRows.length+i}</th>
+                <td><Seat type="Business" row={platinumRows.length+i} column="A" /></td>
+                <td><Seat type="Business" row={platinumRows.length+i} column="B" /></td>
+                <td><Seat type="Business" row={platinumRows.length+i} column="C" /></td>
+            </tr>
+        )
+    })
+    let economyRows = Array(economy).map((n,i)=>{
+        return(
+            <tr>
+                <th>{platinumRows.length+businessRows.length+i}</th>
+                <td><Seat type="Economy" row={platinumRows.length+businessRows.length+i} column="A" /></td>
+                <td><Seat type="Economy" row={platinumRows.length+businessRows.length+i} column="B" /></td>
+                <td><Seat type="Economy" row={platinumRows.length+businessRows.length+i} column="C" /></td>
+            </tr>
+        )
+    })
     return(
         <div className="container is-fluid">
             <div className="columns">
@@ -18,12 +47,15 @@ export default function SeatCanvas () {
                             </tr>
                        </thead>
                        <tbody>
-                            <tr>
-                                <th >1</th>
-                                <td><Seat type="Gold"/></td>
-                                <td><Seat type="Business"/></td>
-                                <td><Seat type="Economy"/></td>
-                            </tr>
+                            {platinumRows.map((row,i)=>{
+                                return {row}
+                            })}
+                            {businessRows.map((row,i)=>{
+                                return {row}
+                            })}
+                            {economyRows.map((row,i)=>{
+                                return {row}
+                            })}
                        </tbody>
                    </table>
                 </div>

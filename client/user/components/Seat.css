@@ -1,0 +1,19 @@
+.seat{
+    height: 50px;
+    width:50px;
+    padding: 0;
+}
+.seat-not-selected{
+    background-color: lightgreen;
+}
+.seat-selected{
+    background-color: lightcoral;
+}
+.seat-disabled{
+    background-color: black;
+}
+
+p{
+    padding-top: 30%;
+    text-align: center;
+}

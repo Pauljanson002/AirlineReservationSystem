@@ -1,0 +1,6 @@
+.table th{
+    vertical-align: inherit;
+}
+.table th:not([align]){
+    text-align: center;
+}

@@ -12,7 +12,7 @@ const FlightSearch = function () {
         setData({...data,[name]:event.target.value})
     }
     return(
-        <div className="container">
+        <div>
             <div className="box  has-background-grey-light mt-0">
                 <form onSubmit={event => event.preventDefault()}>
                     <div className="field">

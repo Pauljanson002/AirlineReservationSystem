@@ -4,10 +4,12 @@ import Home from './core/Home'
 import Login from './auth/login'
 import UserFlightSchedule from './user/user.flightschedule'
 import RegisterUserPage from "./registered_user/registered_user_register";
+import BookFlightPage from "./user/user.book_flight";
 const MainRouter = () =>{
     return (<div>
         <Switch>
-            <Route exact path="/" component={Home}/>
+            {/*<Route exact path="/" component={Home}/>*/}
+            <Route exact path="/" component={BookFlightPage}/>
             <Route exact path="/registered_user/register" component={RegisterUserPage}/>
             <Route exact path="/flight" component={UserFlightSchedule}/>
             <Route exact path="/auth/login" component={Login}/>

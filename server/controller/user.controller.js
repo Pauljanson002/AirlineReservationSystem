@@ -10,7 +10,11 @@ const create = async (req, res, next) => {
             message:"Successfully signed up! "
         })
     }catch (e) {
-        console.log(e)
+        if(e.code === '23505'){
+            return res.status(400).json({
+                error:'Username already exists'
+            })
+        }
         return res.status(400).json({
             error:"Cannot create a new user "
         })

@@ -11,9 +11,9 @@ const signin = async (req,res)=>{
                 error:"User not found"
             })
         }
-        if(req.body.hashed_password !== registered_user.hashed_password){
+        if(req.body.hashed_password.trim() !== registered_user.hashed_password.trim()){
             return res.status('401').json({
-                error:"Username and password doesnot match"
+                error:"Username and password does not match"
             })
         }
 
@@ -25,14 +25,15 @@ const signin = async (req,res)=>{
         return res.json({
             token:token,
             user:{
-                id:registered_user.id,
-                name:registered_user.name,
-                username:registered_user.username,
+                id:registered_user.user_id,
+                name:registered_user.first_name,
+                username:registered_user.user_name,
             }
 
         })
     }
     catch (e) {
+        console.log(e)
         return res.status(400).json({
             error:"Error occurred"
         })

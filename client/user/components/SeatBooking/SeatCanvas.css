@@ -4,3 +4,9 @@
 .table th:not([align]){
     text-align: center;
 }
+.booking-menu{
+    border: black 1px;
+}
+.seat-subtitle{
+    text-align: center;
+}

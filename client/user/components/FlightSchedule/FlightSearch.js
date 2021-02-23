@@ -1,12 +1,16 @@
-import React,{useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import {listFlightsByDate} from "../../flight-api";
 
 
-const FlightSearch = function () {
+const FlightSearch = function ({changeFlights}) {
     const [data,setData]  = useState({
-        date:''
+        date:new Date().toISOString().substring(0,10)
     })
+    useEffect(()=>{
+        changeFlights(data.date)
+    },[])
     const clickSubmit = ()=>{
-        console.log(data)
+         changeFlights(data.date)
     }
     const handleChange = name => event =>{
         setData({...data,[name]:event.target.value})

@@ -26,7 +26,7 @@ export default {
     selectWithUsername:async (username)=>{
         const {rows} = await pool.query(
             "SELECT * " +
-            " from registered_user " +
+            " from registered_user join users using (user_id)" +
             "where user_name = $1 limit 1",[username]
         )
         if(rows.length === 0 ){

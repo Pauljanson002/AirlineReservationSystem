@@ -6,6 +6,7 @@ import cors from "cors";
 import helmet from "helmet";
 import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
+import flightRoutes from './routes/flight.routes'
 import Template from "./../template";
 import devBundle from "./devBundle";
 import path from 'path'
@@ -20,7 +21,8 @@ app.use(helmet());
 app.use(cors());
 app.use('/dist',express.static(path.join(CURRENT_WORKING_DIR,'dist')))
 app.use("/api/registered_user/",userRoutes)
-app.use("/auth/",authRoutes)
+app.use("/",authRoutes)
+app.use("/",flightRoutes)
 app.get("/", (req, res) => {
   res.status(200).send(Template());
 });

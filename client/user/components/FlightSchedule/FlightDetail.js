@@ -1,27 +1,29 @@
 import React from 'react'
 import "./FlightDetail.css"
-export default function FlightDetail({airplane_model,from_airport,departure_time,to_airport}) {
+import {Link} from "react-router-dom";
+export default function FlightDetail({airplane_model,from_airport,departure_time,to_airport,arrival_time,duration,flight_id}) {
     return (
         <div className="container is-fluid is-vcentered my-6">
             <div className="box has-background-info-light has-text-black py-0 my-0 flight-detail-box">
                 <div className="columns">
                     <div className="column">
-                        {airplane_model}
+                        <span className="is-capitalized">{airplane_model}</span>
                     </div>
                     <div className="column">
                        <div className="is-capitalized is-size-2  ">{from_airport}</div>
-                        Start time
+                        {departure_time}
                     </div>
                     <div className="column">
-                        {airplane_model}
-                        Duration
+                        {duration}
                     </div>
                     <div className="column">
                         <div className="is-capitalized is-size-2">{to_airport}</div>
+                        {arrival_time}
                     </div>
                     <div className="column">
-                        price<br/>
-                       <button className="button">Book Now</button>
+                        <Link to={"/flight/book/"+flight_id}>
+                            <button className="button">Book Now</button>
+                        </Link>
                     </div>
                 </div>
             </div>

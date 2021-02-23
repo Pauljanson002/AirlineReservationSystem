@@ -72,12 +72,9 @@ export default function Home() {
                         <div className="box">
                             <div className="columns is-mobile">
                                 <div className="column">
-                                    <Link to="/auth/login">
-                                        <button className="button is-large is-primary" >Login as User</button>
+                                    <Link to="/flight/schedule">
+                                        <button className="button is-large is-primary" >Enter to Platform</button>
                                     </Link>
-                                </div>
-                                <div className="column">
-                                    <button className="button is-large is-primary">Login as Guest</button>
                                 </div>
                             </div>
                             <div className="columns">

@@ -8,4 +8,14 @@ const listFlightDetailsByDate = async (req, res, next) => {
   }
 };
 
-export default { listFlightDetailsByDate };
+const listFlightSeatDetailsByFlightId = async (req,res,next)=>{
+  try{
+    const flights = await flight_db.selectSeatCountWithFlightId(req.params.flight_id);
+    res.json(flights);
+  }catch (e) {
+    console.log(e);
+  }
+}
+
+
+export default { listFlightDetailsByDate,listFlightSeatDetailsByFlightId };

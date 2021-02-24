@@ -140,6 +140,13 @@ export default function SeatCanvas ({platinum, business, economy,flight_id}) {
                            })}
                        </ul>
                    </div>
+                    <div className="content">
+                        <Link>
+                            <button>
+
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

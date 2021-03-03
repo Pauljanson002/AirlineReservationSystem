@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken'
 import expressJwt from 'express-jwt'
 import config from "../../config/config";
 import registered_user_db from "../db/registered_user.db"
+import user_db from "../db/user_db";
 
 const signin = async (req,res)=>{
     try{
@@ -26,8 +27,14 @@ const signin = async (req,res)=>{
             token:token,
             user:{
                 id:registered_user.user_id,
-                name:registered_user.first_name,
+                first_name:registered_user.first_name,
+                last_name:registered_user.last_name,
                 username:registered_user.user_name,
+                email:registered_user.email,
+                telephone:registered_user.telephone,
+                type:registered_user.reg_user_type,
+                discount:registered_user.discount_percentage,
+                booking_count:registered_user.booking_count
             }
 
         })
@@ -40,6 +47,34 @@ const signin = async (req,res)=>{
     }
 
 
+}
+const signInAsGuest = async (req,res)=>{
+    try{
+        let guestUser = await user_db.selectGuestUser()
+        const token = jwt.sign({
+            id:guestUser.user_id,
+        },config.jwtSecret)
+        res.cookie('t',token,{expire:new Date()+9999})
+        return res.status(200).json(
+            {
+                token:token,
+                user:{
+                    id:guestUser.user_id,
+                    first_name:guestUser.first_name,
+                    last_name:guestUser.last_name,
+                    username:'guestuser123456',
+                    email:guestUser.email,
+                    telephone:guestUser.telephone,
+                    type:'guest',
+                    discount:'0',
+                    booking_count:0,
+                }
+            }
+        )
+    }
+    catch (e) {
+       console.log(e)
+    }
 }
 
 const signout = (req,res) => {
@@ -64,4 +99,4 @@ const hasPersonalAuthorization = (req,res,next) =>{
     }
     next()
 }
-export default {signin,signout }
+export default {signin,signout,signInAsGuest }

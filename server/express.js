@@ -7,6 +7,9 @@ import helmet from "helmet";
 import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
 import flightRoutes from './routes/flight.routes'
+import bookingRoutes from './routes/booking.routes'
+import employeeRoutes from './routes/employee.routes'
+import airportRoutes from './routes/airport.routes'
 import Template from "./../template";
 import devBundle from "./devBundle";
 import path from 'path'
@@ -20,9 +23,12 @@ app.use(compress());
 app.use(helmet());
 app.use(cors());
 app.use('/dist',express.static(path.join(CURRENT_WORKING_DIR,'dist')))
-app.use("/api/registered_user/",userRoutes)
+app.use("/",userRoutes)
 app.use("/",authRoutes)
 app.use("/",flightRoutes)
+app.use("/",bookingRoutes)
+app.use("/",employeeRoutes)
+app.use("/",airportRoutes)
 app.get("/", (req, res) => {
   res.status(200).send(Template());
 });

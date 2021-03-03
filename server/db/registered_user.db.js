@@ -36,22 +36,15 @@ export default {
     },
     RegisteredUsernameCheck:async (username)=>{
         const {rows} = await pool.query(
-            'SELECT * ' +
-            'from registered_user ' +
-            'where user_name = $1 limit 1',[username]
+            `select * from check_username_possiblity($1);`,[username]
         )
-        if(rows.length ===0) {
-            return true
-        }else{
-            return false
-        }
+        return rows[0].check_username_possiblity;
     },
     delete:async (registered_user) =>{
         const value = await pool.query(
             "DELETE FROM registered_user where id = $1",[registered_user.id]
         )
+},}
 
-}
-}
 //todo
 // Add constraint for type attribute

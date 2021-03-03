@@ -33,5 +33,15 @@ const registeredUsernameCheck = async (req,res,next) =>{
        console.log(e)
     }
 }
+const update = async (req,res,next)=>{
+    try{
+        const user = req.body
+
+
+    }
+    catch (e) {
+       console.log(e)
+    }
+}
 
 export default {create,registeredUsernameCheck}

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {Redirect} from "react-router";
 import _ from 'lodash'
 import {Link} from "react-router-dom";
 import auth from "../auth/auth-helper";
 import EmployeeMenu from "./../core/EmployeeMenu";
+import {getAllAirportCodes} from "../../../api-access/airport-api";
 const ScheduleFlightPage = () => {
     const [values, setValues] = useState({
         route_id: "",
@@ -16,6 +17,12 @@ const ScheduleFlightPage = () => {
         error:'',
         redirect:false
     });
+    const [airportCodes,setAirportCodes] = useState([])
+    useEffect(()=>{
+        getAllAirportCodes().then((airportCodes)=>{
+            setAirportCodes(airportCodes)
+        })
+    },[])
     const handleChange = (name) => (event) => {
         setValues({ ...values, [name]: event.target.value });
     };
@@ -51,23 +58,26 @@ const ScheduleFlightPage = () => {
                     <div className="field">
                         <label className="label">From</label>
                         <div className="control">
-                            <input
-                                className="input"
-                                type="text"
-                                required
-                                onChange={handleChange('from_airport')}
-                            />
+                            <div className={"select"}>
+                                <select onChange={handleChange('from_airport')}>
+                                    {airportCodes.map((code,i)=>{
+                                        return (<option key={i}>{code}</option>)
+                                    })}
+                                </select>
+                            </div>
                         </div>
                     </div>
 
                     <div className="field">
                         <label className="label">To</label>
                         <div className="control">
-                            <input
-                                className="input"
-                                type="text"
-                                onChange={handleChange('to_airport')}
-                            />
+                            <div className={"select"}>
+                                <select onChange={handleChange('to_airport')}>
+                                    {airportCodes.map((code,i)=>{
+                                        return (<option key={i}>{code}</option>)
+                                    })}
+                                </select>
+                            </div>
                         </div>
                     </div>
 

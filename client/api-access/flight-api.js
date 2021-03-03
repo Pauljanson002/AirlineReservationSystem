@@ -64,6 +64,36 @@ const bookFlights = async (flight_id,seats,user)=>{
       console.log(e)
    }
 }
+const createFlight = async (query)=>{
+    try{
+        let response = await fetch('/api/flight/',{
+            method:'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(query)
+        })
+        return  await response.json()
+    }catch (e) {
+       console.log(e)
+    }
+}
+const addDelayForFlight = async (query)=>{
+    try{
+        let response = await fetch('/api/flight/add-delay/'+query.flight_id,{
+            method:'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(query)
+        })
+        return await response.json()
+    }catch (e) {
+       console.log(e)
+    }
+}
 
 
-export {listFlightsByDate,listFlightSeatCountByFlightId,readSeatPricesByFlightId,getClosedSeatsByFlightId,bookFlights}
+export {listFlightsByDate,listFlightSeatCountByFlightId,readSeatPricesByFlightId,getClosedSeatsByFlightId,bookFlights,createFlight,addDelayForFlight}

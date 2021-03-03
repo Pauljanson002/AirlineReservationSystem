@@ -22,7 +22,7 @@ const FlightSearch = function ({changeFlights}) {
                     <div className="field">
                         <label className="is-size-5">Date of travel</label>
                         <div className="control">
-                            <input className="input" type="date" value={data.date} onChange={handleChange('date')}/>
+                            <input className="input" type="date" value={data.date} onChange={handleChange('date')} min={data.date}/>
                         </div>
                     </div>
                     <div className="field">

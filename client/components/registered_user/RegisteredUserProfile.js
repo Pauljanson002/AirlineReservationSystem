@@ -49,11 +49,11 @@ export default function RegisteredUserProfile() {
                         {user.booking_count}
                     </div>
                 </div>
-                <div>
-                    <Link to={"/registered_user/profile/edit"}>
-                        <button className={"button is-link"}>Edit</button>
-                    </Link>
-                </div>
+                {/*<div>*/}
+                {/*    <Link to={"/registered_user/profile/edit"}>*/}
+                {/*        <button className={"button is-link"}>Edit</button>*/}
+                {/*    </Link>*/}
+                {/*</div>*/}
             </div>
         </div>
     )

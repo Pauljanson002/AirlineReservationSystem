@@ -99,7 +99,7 @@ export default function Home() {
                 <div className={"level"}>
                     <div className={"level-right"}>
                         <div className={"level-item"}>
-                           <Link to={"/employee/schedule"}> <button className={"button"}>Admin</button> </Link>
+                           <Link to={"/employee/home"}> <button className={"button"}>Admin</button> </Link>
                         </div>
                     </div>
                 </div>

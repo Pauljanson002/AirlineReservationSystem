@@ -10,6 +10,8 @@ import flightRoutes from './routes/flight.routes'
 import bookingRoutes from './routes/booking.routes'
 import employeeRoutes from './routes/employee.routes'
 import airportRoutes from './routes/airport.routes'
+import airplaneRoutes from './routes/airplane.routes'
+import reportRoutes from './routes/report.routes'
 import Template from "./../template";
 import devBundle from "./devBundle";
 import path from 'path'
@@ -29,6 +31,8 @@ app.use("/",flightRoutes)
 app.use("/",bookingRoutes)
 app.use("/",employeeRoutes)
 app.use("/",airportRoutes)
+app.use("/",airplaneRoutes)
+app.use("/",reportRoutes)
 app.get("/", (req, res) => {
   res.status(200).send(Template());
 });

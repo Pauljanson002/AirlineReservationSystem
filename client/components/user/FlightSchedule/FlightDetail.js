@@ -11,14 +11,14 @@ export default function FlightDetail({airplane_model,from_airport,departure_time
                     </div>
                     <div className="column">
                        <div className="is-capitalized is-size-2  ">{from_airport}</div>
-                        {from_address}               {departure_time}
+                        <div className={"is-capitalized"}>  {from_address}</div>             {departure_time}
                     </div>
                     <div className="column">
                         {duration}
                     </div>
                     <div className="column">
                         <div className="is-capitalized is-size-2">{to_airport}</div>
-                        {to_address}
+                        <div className={"is-capitalized"}> {to_address}</div>
                         {arrival_time}
                     </div>
                     <div className="column">

@@ -58,5 +58,51 @@ export default {
         }finally {
             client.release()
         }
+    },
+    insertFlight:async (query)=>{
+        const client = await pool.connect()
+        try{
+            await client.query('begin')
+            const {rows} = await client.query('select * from insert_new_flight($1,$2,$3,$4,$5,$6);',
+                [
+                    query.from_airport,
+                    query.to_airport,
+                    query.airplane_num,
+                    query.date,
+                    query.departure_time,
+                    query.scheduled_by
+                ])
+            const flight_id = rows[0].insert_new_flight;
+            const result = await client.query('select * from get_total_rows_with_flight_id($1);',[flight_id])
+            const total_rows = result.rows[0].get_total_rows_with_flight_id
+            for(let row = 1 ; row<=total_rows;row++){
+               for(const column of ['A', 'B', 'C', 'D', 'E', 'F'] ) {
+                   await client.query('insert into ticket (flight_id,airplane_num,seat_num) values ($1,$2,$3);',
+                       [
+                           flight_id,
+                           query.airplane_num,
+                           column + String(row).padStart(2, '0')
+                       ])
+               }
+            }
+            console.log('Flight adding done')
+            await client.query('commit')
+        }
+        catch (e) {
+           client.query('rollback')
+            throw e
+        }finally {
+            client.release()
+        }
+
+},
+    updateFlightWithDelay:async (query)=>{
+        try{
+            await pool.query('update flight set delay_time = $1 where flight_id = $2',[query.delay,query.flight_id])
+            console.log("flight delay added")
+        }
+        catch (e) {
+           throw e
+        }
     }
 }

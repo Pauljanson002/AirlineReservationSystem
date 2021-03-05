@@ -48,5 +48,42 @@ const bookFlights = async (req,res,next)=>{
     console.log(e)
   }
 }
+const createFlight = async (req,res,next)=>{
+  try{
+    const query = req.body
+    await flight_db.insertFlight(query)
+    res.status(200).json({
+      "message":"Flight Added Successfully"
+    })
+  }
+  catch (e) {
+    console.log(e)
+    if(e.code === '23502'){
+      res.status(400).json({
+        "error":"Same country Flights"
+      })
+      return
+    }
+    res.status(400).json({
+      "error":e.toString()
+    })
+  }
+}
 
-export default { listFlightDetailsByDate,listFlightSeatDetailsByFlightId ,readSeatPricesByFlightId,getClosedSeatsByFlightId,bookFlights};
+const addDelay = async (req,res,next)=>{
+  try{
+    const query = req.body
+    query["flight_id"] = req.params.flight_id
+    await flight_db.updateFlightWithDelay(query)
+    res.status(200).json({
+      "message":"Delay added successfully"
+    })
+  }catch (e) {
+    console.log(e)
+    res.status(400).json({
+      "error":"Some error occured"
+    })
+  }
+}
+
+export default { addDelay,listFlightDetailsByDate,listFlightSeatDetailsByFlightId ,readSeatPricesByFlightId,getClosedSeatsByFlightId,bookFlights,createFlight};

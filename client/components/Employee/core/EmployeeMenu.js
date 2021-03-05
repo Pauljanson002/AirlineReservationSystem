@@ -27,12 +27,36 @@ const EmployeeMenu = withRouter(({history})=> {
                     <Link className="navbar-item" to={"/employee/schedule"}>
                         Schedule Flights
                     </Link>
-                    {/*<Link className="navbar-item" to={"/flight/booking"}>*/}
-                    {/*    Bookings*/}
-                    {/*</Link>*/}
+                    <Link className="navbar-item" to={"/employee/flight/schedule"}>
+                        Show Flights
+                    </Link>
+                    { auth.isAuthenticated().employee.occupation === 'manager' && <div className="navbar-item has-dropdown is-hoverable">
+                        <a href={"#"} className="navbar-link">
+                            Reports
+                        </a>
 
-
+                        <div className="navbar-dropdown">
+                            <Link className="navbar-item" to={"/employee/report/age-group-report"}>
+                                FlightReportByAgeGroup
+                            </Link>
+                            <Link className="navbar-item" to={"/employee/report/passenger-report/"}>
+                                PassengerReportByDestination
+                            </Link>
+                            <Link className="navbar-item" to={"/employee/report/booking-report/"}>
+                                BookingReportByPassengerType
+                            </Link>
+                                <Link className="navbar-item" to={"/employee/report/passenger-count-data/"}>
+                                    PassengerCountData
+                                </Link>
+                            <Link className="navbar-item" to={"/employee/report/revenue-report/"}>
+                                    RevenueReport
+                            </Link>
+                        </div>
+                    </div>}
                 </div>
+
+
+
 
                 <div className="navbar-end">
                     <div className="navbar-item">

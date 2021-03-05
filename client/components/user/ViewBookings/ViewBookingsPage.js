@@ -46,7 +46,7 @@ export default function ViewBookingPage() {
             <Menu/>
             <div className="section content">
                <div className={"container"}>
-                   <h1>Unpaid Bookings</h1>
+                   <h1>Pending Bookings</h1>
                     <table className={"table"}>
                         <thead>
                             <tr>
@@ -75,7 +75,7 @@ export default function ViewBookingPage() {
             </div>
             <div className="section content">
                 <div className={"container"}>
-                    <h1>Paid Bookings</h1>
+                    <h1>Past Bookings</h1>
                     <table className={"table"}>
                         <thead>
                         <tr>

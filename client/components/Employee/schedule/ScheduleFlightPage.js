@@ -18,7 +18,8 @@ const ScheduleFlightPage = () => {
         scheduled_by: "",
         error:'',
         redirect:false,
-        loading:false
+        loading:false,
+        message:'',
     });
     const [airportCodes,setAirportCodes] = useState([])
     const [airplaneNumbers,setAirplaneNumbers] = useState([])
@@ -51,7 +52,10 @@ const ScheduleFlightPage = () => {
             if(data.error){
                 setValues({...values,error: data.error,loading: false})
             }else {
-                setValues({...values,error: '',loading: false,redirect: true})
+                setValues({...values,error: '',loading: false,message: data.message})
+                setTimeout(()=>{
+                    setValues({...values,redirect: true})
+                },1000)
             }
         })
         // const flight = {
@@ -72,7 +76,7 @@ const ScheduleFlightPage = () => {
     }
     if(values.redirect){
         return (
-            <Redirect to="/"/>
+            <Redirect to="/employee/home"/>
         )
     }
     return (
@@ -112,7 +116,7 @@ const ScheduleFlightPage = () => {
                         <label className="label">Airplane Number</label>
                         <div className="control">
                             <div className={"select"}>
-                                <select onChange={handleChange('airplane_number')}>
+                                <select onChange={handleChange('airplane_num')}>
                                     {airplaneNumbers.map((code,i)=>{
                                         return (<option key={i}>{code}</option>)
                                     })}
@@ -152,6 +156,11 @@ const ScheduleFlightPage = () => {
                     {values.error && (
                         <div className="notification is-danger">
                             {values.error}
+                        </div>
+                    )}
+                    {values.message && (
+                        <div className="notification is-success">
+                            {values.message}
                         </div>
                     )}
 
